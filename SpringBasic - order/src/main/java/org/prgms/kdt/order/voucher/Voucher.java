@@ -1,0 +1,11 @@
+package org.prgms.kdt.order.voucher;
+
+import java.util.UUID;
+
+public interface Voucher {
+
+    UUID getVoucherId();
+
+    long discount(long beforeDiscount);
+
+}

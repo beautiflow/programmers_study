@@ -1,0 +1,14 @@
+logging:
+  level:
+    org:
+      springframework: info
+kdt:
+  version: "v1.0-local"
+  minimum-order-amount: 1
+  support-vendors:
+    - local-a
+    - local-b
+  description: |-
+    local line 1 hello world
+    local line 2 xxxx
+    local line 3
