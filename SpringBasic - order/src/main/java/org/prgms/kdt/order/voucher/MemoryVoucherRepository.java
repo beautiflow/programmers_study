@@ -21,13 +21,13 @@ public class MemoryVoucherRepository implements VoucherRepository/*, Initializin
     private final Map<UUID, Voucher> storage = new ConcurrentHashMap<>();
 
     @Override
-    public Optional<Voucher> findById(UUID voucherId) {
-        return Optional.ofNullable(storage.get(voucherId));
+    public Optional<Voucher> findById(UUID voucherId) { // null 을 발생하지 않게 하기 위해 Optional
+        return Optional.ofNullable(storage.get(voucherId)); // null 일 경우 empty 반환
     }
 
     @Override
     @TrackTime
-    public Voucher insert(Voucher voucher) {
+    public Voucher insert(Voucher voucher) { // 추가된 voucher 리턴되도록
         storage.put(voucher.getVoucherId(), voucher);
         return voucher;
     }
