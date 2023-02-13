@@ -20,7 +20,7 @@ public class FixedAmountVoucher implements Voucher{
         return voucherId;
     }
 
-    public long discount(long beforeDiscount) {
+    public long discount(long beforeDiscount) { // 실제 주어진 금액에 대해서 어떻게 할인을 할지 하기 위한 로직
         var discountedAmount = beforeDiscount - amount;
         return (discountedAmount < 0) ? 0 : discountedAmount;
     }

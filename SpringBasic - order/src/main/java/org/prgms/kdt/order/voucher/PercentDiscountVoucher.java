@@ -19,7 +19,7 @@ public class PercentDiscountVoucher implements Voucher {
     }
 
     @Override
-    public long discount(long beforeDiscount) {
+    public long discount(long beforeDiscount) { // 특정한 비율 만큼 할인
         return beforeDiscount * (percent / 100);
     }
 }

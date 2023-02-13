@@ -11,7 +11,7 @@ public class Order {
     private final UUID orderId;  // 식별자. long 타입 많이 쓰지만 UUID 로 만듦
     private final UUID customerId;
     private final List<OrderItem> orderItems; // 주문 목록
-    private Optional<Voucher> voucher;
+    private Optional<Voucher> voucher;  // voucher 라는 인터페이스를 전달받도록
     private OrderStatus orderStatus = OrderStatus.ACCEPTED;
 
     public Order(UUID orderId, UUID customerId, List<OrderItem> orderItems) {
