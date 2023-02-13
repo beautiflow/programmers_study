@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class Order {
-    private final UUID orderId;
+    private final UUID orderId;  // 식별자. long 타입 많이 쓰지만 UUID 로 만듦
     private final UUID customerId;
-    private final List<OrderItem> orderItems;
+    private final List<OrderItem> orderItems; // 주문 목록
     private Optional<Voucher> voucher;
     private OrderStatus orderStatus = OrderStatus.ACCEPTED;
 
@@ -30,7 +30,7 @@ public class Order {
 
     public long totalAmount() {
         var beforeDiscount = orderItems.stream()
-                .map(v -> v.getProductPrice() * v.getQuantity())
+                .map(v -> v.getProductPrice() * v.getQuantity()) // 항목들을 가져와서 순회하면서 수량을 곱해주고
                 .reduce(0L, Long::sum);
         return voucher.map(value -> value.discount(beforeDiscount)).orElse(beforeDiscount);
     }

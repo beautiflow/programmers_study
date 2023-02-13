@@ -1,6 +1,6 @@
 package org.prgms.kdt.order.order;
 
-public enum OrderStatus {
+public enum OrderStatus { // 주문 상태
     ACCEPTED,
     PAYMENT_REQUIRED,
     PAYMENT_CONFIRMED,
