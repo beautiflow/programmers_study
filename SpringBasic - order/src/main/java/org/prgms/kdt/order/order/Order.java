@@ -18,21 +18,21 @@ public class Order {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderItems = orderItems;
-        this.voucher = Optional.empty();
+        this.voucher = Optional.empty(); // voucher 없을 경우
     }
 
     public Order(UUID orderId, UUID customerId, List<OrderItem> orderItems, Voucher voucher) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.orderItems = orderItems;
-        this.voucher = Optional.of(voucher);
+        this.voucher = Optional.of(voucher); // voucher 있을 경우
     }
 
     public long totalAmount() {
         var beforeDiscount = orderItems.stream()
                 .map(v -> v.getProductPrice() * v.getQuantity()) // 항목들을 가져와서 순회하면서 수량을 곱해주고
                 .reduce(0L, Long::sum);
-        return voucher.map(value -> value.discount(beforeDiscount)).orElse(beforeDiscount);
+        return voucher.map(value -> value.discount(beforeDiscount)).orElse(beforeDiscount); // voucher 가 존재하면 할인, 그렇지 않으면 할인하지 않음
     }
 
     public UUID getOrderId() { return this.orderId; }
