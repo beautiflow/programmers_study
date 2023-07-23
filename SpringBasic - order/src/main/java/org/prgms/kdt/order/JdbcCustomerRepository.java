@@ -24,7 +24,7 @@ public class JdbcCustomerRepository {
 
     public List<String> findNames(String name) {
         List<String> names = new ArrayList<>();
-        try (
+        try (  // AutoCloseable 을 구현한 인터페이스 내용이 들어와야 함
                 var connection = DriverManager.getConnection("jdbc:mysql://localhost/order_mgmt", "root", "");
                 var statement = connection.prepareStatement(SELECT_BY_NAME_SQL);
         ){
